@@ -6,7 +6,7 @@ import { Directive, ElementRef } from '@angular/core';
 export class ColorDirective {
 
   constructor(
-    private elRef: ElementRef
+    public elRef: ElementRef
   ) {
     elRef.nativeElement.style.background = 'orange';
     elRef.nativeElement.style.color = 'white';
