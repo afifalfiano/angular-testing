@@ -9,25 +9,34 @@ import { DataService } from '../service/data.service';
 })
 export class FormDataComponent implements OnInit {
 
-  formLogin = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
-  });
+  // formLogin = new FormGroup({
+  //   username: new FormControl('', Validators.required),
+  //   password: new FormControl('', Validators.required)
+  // });
+  formLogin: FormGroup;
 
   dataLogin = [];
 
   loggedIn = false;
   constructor(
-    private dataSvc: DataService
+    private dataSvc: DataService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.onInitForm();
     this.getDataLogin();
   }
 
-  // tslint:disable-next-line:typedef
-  onSubmit() {
-      this.formLogin.value.username === this.dataLogin[0].username && this.formLogin.value.password === this.dataLogin[0].password ?
+  onInitForm(): any {
+    this.formLogin = this.formBuilder.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
+  }
+
+  onSubmit(): any {
+    this.formLogin.value.username === this.dataLogin[0].username && this.formLogin.value.password === this.dataLogin[0].password ?
       this.loggedIn = true : this.loggedIn = false;
   }
 
