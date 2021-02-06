@@ -1,0 +1,30 @@
+<h1>Frontend Testing</h1>
+<form (ngSubmit)="onSubmit()" [formGroup]="formLogin">
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" name="username" id="username">
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" formControlName="password">
+
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="!formLogin.valid">LogIn</button>
+        <button type="reset">Reset</button>
+    </div>
+</form>
+
+<div *ngIf="!formLogin.valid;">
+    <h2>Please fill the correct username and password!</h2>
+</div>
+<div *ngIf="formLogin.touched && loggedIn">
+    <h2>Successfully Login</h2>
+</div>
+<div *ngIf="formLogin.touched && !loggedIn">
+    <h2>Username or password incorrect!</h2>
+</div>
+
