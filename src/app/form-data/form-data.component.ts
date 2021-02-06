@@ -30,7 +30,7 @@ export class FormDataComponent implements OnInit {
 
   onInitForm(): any {
     this.formLogin = this.formBuilder.group({
-      email: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
