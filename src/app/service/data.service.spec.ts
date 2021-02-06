@@ -13,4 +13,9 @@ describe('DataService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should dataLogin length ', () => {
+    const data = service.getData();
+    expect(data.length).toBeGreaterThanOrEqual(1);
+  });
 });

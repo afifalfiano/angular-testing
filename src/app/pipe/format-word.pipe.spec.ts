@@ -6,3 +6,12 @@ describe('FormatWordPipe', () => {
     expect(pipe).toBeTruthy();
   });
 });
+
+
+describe('Check word', () => {
+
+  it ('should have a word Admin', () => {
+    const pipe = new FormatWordPipe();
+    expect(pipe.transform('afif')).toEqual('afif (Admin)');
+  });
+});
