@@ -12,6 +12,8 @@ describe('Frontend  Testing', () => {
         cy.get('input#password').type('12345');
         cy.wait(1000);
         cy.contains('LogIn').click();
+        cy.get('div').should('contain', 'Successfully Login');
+
     })
 
     it('check validate when username and password is wrong', () => {
@@ -19,5 +21,6 @@ describe('Frontend  Testing', () => {
         cy.get('input#password').type('123456');
         cy.wait(1000);
         cy.contains('LogIn').click();
+        cy.get('div').should('contain', 'Username or password incorrect!');
     })
 })

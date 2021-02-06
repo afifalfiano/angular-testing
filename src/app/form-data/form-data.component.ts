@@ -8,11 +8,6 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./form-data.component.scss']
 })
 export class FormDataComponent implements OnInit {
-
-  // formLogin = new FormGroup({
-  //   username: new FormControl('', Validators.required),
-  //   password: new FormControl('', Validators.required)
-  // });
   formLogin: FormGroup;
 
   dataLogin = [];
