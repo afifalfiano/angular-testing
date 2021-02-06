@@ -32,11 +32,22 @@
             <div *ngIf="!formLogin.valid;" class="alert alert-primary" role="alert">
                 Please fill the correct username and password!
             </div>
-            <div *ngIf="formLogin.touched && !formLogin.pristine && loggedIn" class="alert alert-success" role="alert">
+            <div *ngIf="formLogin.touched && loggedIn" class="alert alert-success" role="alert">
                 Successfully Login
             </div>
             <div *ngIf="formLogin.touched && !loggedIn" class="alert alert-danger" role="alert">
                 Username or password incorrect!
+            </div>
+            <div *ngIf="loggedIn">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Data</h5>
+                        <p>Username: {{formLogin['controls']['username'].value | formatWord}}</p>
+                        <p appColor>Password: {{formLogin['controls']['password'].value}}</p>
+                        <p>Address: {{dataLogin[0].address}}</p>                    
+                        <p>Mobile: {{dataLogin[0].mobile}}</p>                    
+                    </div>
+                  </div> 
             </div>
         </div>
     </div>

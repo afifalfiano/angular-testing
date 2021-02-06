@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-form-data',
@@ -13,23 +14,25 @@ export class FormDataComponent implements OnInit {
     password: new FormControl('', Validators.required)
   });
 
-  dataLogin = {
-    username : 'Afif',
-    password : 'Test'
-  };
+  dataLogin = [];
 
   loggedIn = false;
-  constructor() { }
+  constructor(
+    private dataSvc: DataService
+  ) { }
 
   ngOnInit(): void {
+    this.getDataLogin();
   }
 
   // tslint:disable-next-line:typedef
   onSubmit() {
-    this.formLogin.value.username === this.dataLogin.username && this.formLogin.value.password === this.dataLogin.password ?
-    this.loggedIn = true : this.loggedIn = false;
-    console.log('Data', this.formLogin.value);
-    console.log('FormGroup', this.formLogin);
+      this.formLogin.value.username === this.dataLogin[0].username && this.formLogin.value.password === this.dataLogin[0].password ?
+      this.loggedIn = true : this.loggedIn = false;
+  }
+
+  getDataLogin(): any {
+    this.dataLogin = this.dataSvc.getData();
   }
 
 }
