@@ -1,23 +1,25 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, by, element, logging } from 'protractor';
+import { protractor } from 'protractor/built/ptor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
-
   beforeEach(() => {
     page = new AppPage();
   });
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('angular-testing app is running!');
+    expect(await page.getTitleText()).toEqual('Frontend Testing');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('should fill username and password', async () => {
+    element(by.id('username')).sendKeys('afif');
+    element(by.id('password')).sendKeys('12345');
+    expect(await page.getInputText()).toBe('afif');
+    expect(await page.getInputPassword()).toBe('12345');
   });
+
+
+
 });

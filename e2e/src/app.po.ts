@@ -6,6 +6,16 @@ export class AppPage {
   }
 
   async getTitleText(): Promise<string> {
-    return element(by.css('app-root .content span')).getText();
+    return element(by.css('h1')).getText();
   }
+
+  async getInputText(): Promise<string> {
+    return element(by.css('input#username')).getAttribute('value');
+  }
+
+  async getInputPassword(): Promise<string> {
+    return element(by.css('input#password')).getAttribute('value');
+  }
+
+
 }
