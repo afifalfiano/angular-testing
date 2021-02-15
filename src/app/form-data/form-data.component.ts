@@ -39,4 +39,8 @@ export class FormDataComponent implements OnInit {
     this.dataLogin = this.dataSvc.getData();
   }
 
+  onClickReset(): any {
+    this.loggedIn = false;
+  }
+
 }
